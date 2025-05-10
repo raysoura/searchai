@@ -55,6 +55,12 @@
 			<artifactId>javax.persistence-api</artifactId>
 			<version>2.2</version> <!-- Use the version that suits your project -->
 		</dependency>
+		<dependency>
+			<groupId>co.elastic.clients</groupId>
+			<artifactId>elasticsearch-java</artifactId>
+			<version>8.11.1</version>  <!-- Use the version compatible with your Elasticsearch server -->
+		</dependency>
+
 	</dependencies>
 
 	<build>

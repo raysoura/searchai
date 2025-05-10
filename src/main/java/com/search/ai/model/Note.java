@@ -22,13 +22,19 @@ public class Note {
     @Id
     private String id;
 
+    @Field(type = FieldType.Text, analyzer = "custom_analyzer")
     private String title;
+
+    @Field(type = FieldType.Text, analyzer = "custom_analyzer")
     private String content;
 
     @Field(type = FieldType.Dense_Vector, dims = 384) // adjust if using different embedding dimensions
     private float[] vectorEmbedding;
 
+    @Field(type = FieldType.Date)
     private Instant createdAt;
+
+    @Field(type = FieldType.Date)
     private Instant updatedAt;
 
     // Methods to auto-populate createdAt and updatedAt

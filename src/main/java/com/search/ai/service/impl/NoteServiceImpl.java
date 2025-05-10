@@ -18,6 +18,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+
 @Service
 public class NoteServiceImpl implements NoteService {
 
@@ -78,4 +79,6 @@ public class NoteServiceImpl implements NoteService {
         return StreamSupport.stream(notesIterable.spliterator(), false)
                 .collect(Collectors.toList());
     }
+
+
 }
