@@ -24,13 +24,13 @@ Elasticsearch 8.x (or a compatible version)
 OpenAI API key (if using OpenAI integration for summarization)
 
 ### Setup and Installation
-1. Clone the repository
+#### 1. Clone the repository
    git clone https://github.com/yourusername/notes-search-app.git
    cd notes-search-app
-2. Configure Elasticsearch
+#### 2. Configure Elasticsearch
    Ensure Elasticsearch is running on your local machine or use a cloud-based Elasticsearch service. You can download and start Elasticsearch from here.
 
-3. Configure application.properties
+#### 3. Configure application.properties
    In the src/main/resources/application.properties file, configure your Elasticsearch server:
 
 spring.data.elasticsearch.client.reactive.endpoints=localhost:9200
@@ -40,7 +40,7 @@ spring.elasticsearch.rest.uris=http://localhost:9200
 If you're using OpenAI for summarization, add your API key as well:
 openai.api.key=your-openai-api-key
 
-5. Build and run the application
+#### 4. Build and run the application
    Build the application using Maven:
 
 mvn clean install
@@ -49,19 +49,18 @@ Run the application:
 
 mvn spring-boot:run
 
-6. Access the API
+#### 5. Access the API
    Once the application is running, you can access the API endpoints.
 
-Create a new note: POST /notes
+##### Create a new note: POST /notes
 
-Retrieve all notes: GET /notes
+##### Retrieve all notes: GET /notes
 
-Search notes by text: GET /notes/search?keyword={keyword}
+##### Search notes by text: GET /notes/search?keyword={keyword}
 
-Summarize a note: POST /notes/summarize
 
 ### API Endpoints
-1. Create a Note
+#### 1. Create a Note
    Endpoint: POST /notes
 
 Request body:
@@ -70,7 +69,7 @@ Request body:
 "title": "Note Title",
 "content": "This is the content of the note."
 }
-2. Get All Notes
+#### 2. Get All Notes
    Endpoint: GET /notes
 
 Response:
@@ -85,23 +84,14 @@ Response:
 }
 ]
 
-3. Search Notes by Keyword
+#### 3. Search Notes by Keyword
    Endpoint: GET /notes/search?keyword={keyword}
 
 Description: Search notes by title and content, supporting fuzzy matching.
 
 Example: GET /notes/search?keyword=note
 
-4. Summarize a Note
-   Endpoint: POST /notes/summarize
-
-Request body:
-
-{
-"id": "1",
-"content": "This is the content that will be summarized by GPT."
-}
-5. Autocomplete Search
+#### 4. Autocomplete Search
    Endpoint: GET /notes/autocomplete?prefix={prefix}
 
 Description: Get prefix-based search results for note titles.
