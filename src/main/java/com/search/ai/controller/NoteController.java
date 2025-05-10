@@ -45,4 +45,14 @@ public class NoteController {
         }
         return ResponseEntity.ok(notes);
     }
+
+    @GetMapping("/search/autocomplete")
+    public ResponseEntity<List<String>> autocomplete(@RequestParam String prefix) {
+        List<String> suggestions = noteService.autocomplete(prefix);
+        if (suggestions.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(suggestions);
+
+    }
 }

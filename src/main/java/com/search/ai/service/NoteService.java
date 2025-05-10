@@ -16,4 +16,6 @@ public interface NoteService {
     List<Note> searchByText(String keyword);
 
     List<Note> getAllNotes();
+
+    List<String> autocomplete(String prefix);
 }
