@@ -1,5 +1,6 @@
 package com.search.ai.service;
 
+import com.search.ai.constants.SearchStrategy;
 import com.search.ai.model.Note;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface NoteService {
     List<Note> getAllNotes();
 
     List<String> autocomplete(String prefix);
+
+    List<?> search(String keyword, SearchStrategy strategy);
 }

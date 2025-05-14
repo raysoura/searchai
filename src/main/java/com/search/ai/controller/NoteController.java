@@ -1,5 +1,6 @@
 package com.search.ai.controller;
 
+import com.search.ai.constants.SearchStrategy;
 import com.search.ai.model.Note;
 import com.search.ai.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,16 @@ public class NoteController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(suggestions);
+
+    }
+
+    @GetMapping("/v2/search")
+    public ResponseEntity<List<?>> searchV2(@RequestParam String keyword, @RequestParam String searchStrategy) {
+        List<?> noteList = (List<?>) noteService.search(keyword, SearchStrategy.valueOf(searchStrategy));
+        if (noteList.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(noteList);
 
     }
 }

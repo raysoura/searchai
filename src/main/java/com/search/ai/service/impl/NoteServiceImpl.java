@@ -7,9 +7,11 @@ import co.elastic.clients.elasticsearch._types.query_dsl.Query;
 import co.elastic.clients.elasticsearch.core.SearchRequest;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
+import com.search.ai.constants.SearchStrategy;
 import com.search.ai.repository.NoteRepository;
 import com.search.ai.model.Note;
 import com.search.ai.service.NoteService;
+import com.search.ai.strategy.StrategyRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,9 @@ public class NoteServiceImpl implements NoteService {
 
     @Autowired
     private NoteRepository repository;
+
+    @Autowired
+    private StrategyRegistry strategyRegistry;
 
     @Autowired
     private ElasticsearchClient elasticsearchClient;
@@ -109,6 +114,11 @@ public class NoteServiceImpl implements NoteService {
                 .filter(note -> note != null)
                 .map(Note::getTitle)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<?> search(String keyword, SearchStrategy strategy) {
+        return strategyRegistry.get(strategy).search(keyword);
     }
 
 
